@@ -41,6 +41,9 @@ class RomanNumeralConversion:
         # Convert a list of integers to Roman numerals
         output_list = []
         for num in l:
+            if num > 3999:
+                output_list.append(f"{TextColors.RED}[!]{TextColors.STANDARD} Larger than 3999.")
+                continue
             result = []
             for roman, value in self.roman_values:
                 while num >= value:
@@ -99,11 +102,11 @@ def convert_roman_list():
 
         except KeyError:
             print(
-                f"\n{TextColors.RED}[!]{TextColors.STANDARD} One or more of the values entered is not a Roman Numeral!\n")
+                f"\n{TextColors.RED}[!]{TextColors.STANDARD} One or more of the values entered is not a Roman Numeral!")
             time.sleep(0.5)
 
     except ValueError:
-        print(f"\n{TextColors.RED}[!]{TextColors.STANDARD} The value you have entered is not an integer.\n")
+        print(f"\n{TextColors.RED}[!]{TextColors.STANDARD} The value you have entered is not an integer.")
         time.sleep(0.5)
 
     time.sleep(0.5)
@@ -112,6 +115,9 @@ def convert_roman_list():
 def convert_int_list():
     # Function to convert a list of integers to Roman numerals
     int_list = []
+    time.sleep(0.5)
+
+    print(f"\n{TextColors.GREEN}[✓]{TextColors.STANDARD} Only enter integers less than 3999!")
 
     try:
         num = int(input(
@@ -128,7 +134,7 @@ def convert_int_list():
             print(f"{TextColors.MAGENTA}(3){TextColors.STANDARD} '{int_list[i]}': {roman}")
 
     except ValueError:
-        print(f"\n{TextColors.RED}[!]{TextColors.STANDARD} The value you have entered is not an integer.\n")
+        print(f"\n{TextColors.RED}[!]{TextColors.STANDARD} The value you have entered is not an integer.")
 
     time.sleep(0.5)
 
@@ -142,7 +148,7 @@ def main():
             user_choice = int(input(
                 f"\nWould you like to:\n{TextColors.BLUE}(1){TextColors.STANDARD} Check if a string is a Roman Numeral\n{TextColors.YELLOW}(2){TextColors.STANDARD} Convert a list of Roman Numeral strings to integers\n{TextColors.MAGENTA}(3){TextColors.STANDARD} Convert a list of integers to Roman Numerals\n{TextColors.RED}(-1){TextColors.STANDARD} Exit\n\n"))
         except ValueError:
-            print(f"\n{TextColors.RED}[!]{TextColors.STANDARD} The value you have entered is not an integer.\n")
+            print(f"\n{TextColors.RED}[!]{TextColors.STANDARD} The value you have entered is not an integer.")
             time.sleep(0.5)
             continue
 
@@ -165,7 +171,7 @@ def main():
             break
 
         else:
-            print(f"\n{TextColors.RED}[!]{TextColors.STANDARD} The entered choice is not an option.\n")
+            print(f"\n{TextColors.RED}[!]{TextColors.STANDARD} The entered choice is not an option.")
 
 
 if __name__ == "__main__":
