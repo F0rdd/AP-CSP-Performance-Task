@@ -2,11 +2,13 @@ import time
 
 class RomanNumeralConversion:
     def __init__(self):
+        # Initialize Roman numeral mappings and values for conversion
         self.romans = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
         self.roman_values = [("M", 1000), ("CM", 900), ("D", 500), ("CD", 400), ("C", 100), ("XC", 90), ("L", 50),
                              ("XL", 40), ("X", 10), ("IX", 9), ("V", 5), ("IV", 4), ("I", 1)]
 
     def is_roman(self, s: str) -> bool:
+        # Check if a string is a valid Roman numeral
         for char in s:
             if char in self.romans:
                 continue
@@ -15,6 +17,7 @@ class RomanNumeralConversion:
         return True
 
     def roman_to_int(self, l: list) -> list:
+        # Convert a list of Roman numerals to integers
         output_list = []
         for s in l:
             output = 0
@@ -23,6 +26,7 @@ class RomanNumeralConversion:
                 try:
                     if i != skip_index:
                         if self.romans[s[i + 1]] > self.romans[char]:
+                            # Handle cases where a smaller numeral precedes a larger numeral
                             value = self.romans[s[i + 1]] - self.romans[char]
                             skip_index = i + 1
                         else:
@@ -34,6 +38,7 @@ class RomanNumeralConversion:
         return output_list
 
     def int_to_roman(self, l: list) -> list:
+        # Convert a list of integers to Roman numerals
         output_list = []
         for num in l:
             result = []
@@ -46,6 +51,7 @@ class RomanNumeralConversion:
 
 
 class TextColors:
+    # Define text colors for console output
     RED = '\033[91m'
     GREEN = '\033[92m'
     BLUE = '\033[94m'
@@ -54,10 +60,12 @@ class TextColors:
     STANDARD = '\033[0m'
 
 
+# Create an instance of RomanNumeralConversion
 RNC = RomanNumeralConversion()
 
 
 def check_roman():
+    # Function to check if a string is a valid Roman numeral
     user_string = input(
         f"\n{TextColors.BLUE}(1){TextColors.STANDARD} Enter the string you would like to check below:\n\n")
     is_roman = RNC.is_roman(user_string)
@@ -71,6 +79,7 @@ def check_roman():
 
 
 def convert_roman_list():
+    # Function to convert a list of Roman numerals to integers
     roman_list = []
 
     try:
@@ -99,7 +108,9 @@ def convert_roman_list():
 
     time.sleep(0.5)
 
+
 def convert_int_list():
+    # Function to convert a list of integers to Roman numerals
     int_list = []
 
     try:
@@ -121,7 +132,9 @@ def convert_int_list():
 
     time.sleep(0.5)
 
+
 def main():
+    # Main function to provide user options and execute corresponding functions
     print(f"Welcome to the Roman Numeral Conversion Script.")
 
     while True:
